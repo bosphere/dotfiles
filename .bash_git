@@ -2,7 +2,7 @@ alias master="git checkout master && git pull"
 alias pushrepo="git push -u origin HEAD"
 alias rebasemaster="~/bin/rebasemaster.sh"
 alias configupstream="~/bin/config_upstream.sh"
-alias clearbranch='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
+alias clearbranch='git branch --merged | grep -v "master" | grep -v "\*" | xargs -n 1 git branch -d'
 
 checkout() {
     if [ -z "$1" ]
@@ -14,10 +14,11 @@ checkout() {
 }
 
 commitas() {
-    if [ "$#" -ne 2 ]; then
-        echo 'usage: commitas "username" "email"'
+    if [ "$#" -ne 1 ]; then
+        echo 'usage: commitas "github_username"'
     else
-        echo "user: $1, email: $2"
-        GIT_COMMITTER_NAME='$1' GIT_COMMITTER_EMAIL='$2' git commit --author="$1 <$2>" --amend
+        email="$1@users.noreply.github.com"
+        echo "user: $1, email: $email"
+        GIT_COMMITTER_NAME='$1' GIT_COMMITTER_EMAIL='$email' git commit --author="$1 <$email>" --amend
     fi
 }
