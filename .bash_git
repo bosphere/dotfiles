@@ -1,0 +1,23 @@
+alias master="git checkout master && git pull"
+alias pushrepo="git push -u origin HEAD"
+alias rebasemaster="~/bin/rebasemaster.sh"
+alias configupstream="~/bin/config_upstream.sh"
+alias clearbranch='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
+
+checkout() {
+    if [ -z "$1" ]
+    then
+        echo "branch name can't be empty"
+    else
+        git checkout -b yangbo/$1
+    fi
+}
+
+commitas() {
+    if [ "$#" -ne 2 ]; then
+        echo 'usage: commitas "username" "email"'
+    else
+        echo "user: $1, email: $2"
+        GIT_COMMITTER_NAME='$1' GIT_COMMITTER_EMAIL='$2' git commit --author="$1 <$2>" --amend
+    fi
+}
