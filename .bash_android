@@ -1,5 +1,2 @@
-# mac only
-export STUDIO_JDK="/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk"
-
 export PATH=$PATH:"~/Library/Android/sdk/platform-tools"
 alias retrace="~/Library/Android/sdk/tools/proguard/bin/retrace.sh"
