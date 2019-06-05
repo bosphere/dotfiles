@@ -1,0 +1,1 @@
+alias syslog='log show --predicate "processID == 0" --start $(date "+%Y-%m-%d") --debug'

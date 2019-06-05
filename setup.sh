@@ -27,5 +27,7 @@ safecopy .bash_git ~
 
 safecopy .bash_android ~
 
+safecopy .bash_mac ~
+
 safecopy .bashrc ~
 safecopy .bash_profile ~
