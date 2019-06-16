@@ -19,6 +19,8 @@ function safecopy {
     cp "$CUR_DIR/$1" "$OUTPUT_DIR/$FILE"
 }
 
+safecopy .vimrc ~
+
 safecopy bin/config_upstream.sh ~/bin
 safecopy bin/rebasemaster.sh ~/bin
 
