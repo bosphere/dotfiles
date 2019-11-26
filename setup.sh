@@ -23,6 +23,7 @@ safecopy .vimrc ~
 
 safecopy bin/config_upstream.sh ~/bin
 safecopy bin/rebasemaster.sh ~/bin
+safecopy bin/mp4_to_gif.sh ~/bin
 
 safecopy .git-completion.bash ~
 safecopy .bash_git ~
