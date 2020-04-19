@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 set -e
 
 CUR_DIR=`dirname $0`
@@ -19,18 +19,35 @@ function safecopy {
     cp "$CUR_DIR/$1" "$OUTPUT_DIR/$FILE"
 }
 
-safecopy .vimrc ~
+function clone_or_pull {
+    local REPO=$1
+    local LOCAL_REPO=$2
+    local LOCAL_REPO_GIT=$LOCAL_REPO/.git
 
-safecopy bin/config_upstream.sh ~/bin
-safecopy bin/rebasemaster.sh ~/bin
-safecopy bin/mp4_to_gif.sh ~/bin
+    if [ ! -d $LOCAL_REPO_GIT ]; then
+        git clone $REPO $LOCAL_REPO
+    else
+        pushd $LOCAL_REPO
+        git pull $REPO
+        popd
+    fi
+}
 
-safecopy .git-completion.bash ~
-safecopy .bash_git ~
+# install Oh My Zsh (https://github.com/ohmyzsh/ohmyzsh)
+#sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-safecopy .bash_android ~
+# install zsh-autosuggestions
+zsh_autosuggestions_repo="https://github.com/zsh-users/zsh-autosuggestions"
+zsh_autosuggestions_dir=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+clone_or_pull $zsh_autosuggestions_repo $zsh_autosuggestions_dir
 
-safecopy .bash_mac ~
+safecopy .zshrc ~
 
-safecopy .bashrc ~
-safecopy .bash_profile ~
+cur_dir=${0:a:h}
+cat >> ~/.zshrc <<- END
+for f in $cur_dir/source_*; do
+    source \$f
+done
+END
+
+#safecopy .vimrc ~

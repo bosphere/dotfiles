@@ -23,23 +23,28 @@ print() {
     echo -e "[${red}$1${NC}] $2"
 }
 
+if [[ $# -ne 1 ]]; then
+    echo "Usage: $0 BRANCH_NAME"
+    exit 1
+fi
+
 current=$(git branch | grep "*" | sed "s/* //")
 echo -e "current branch: $red$current$NC"
-if [[ $current == "master" ]]; then
-    print "master" "already at master branch, fetching from remote.."
+if [[ $current == "$1" ]]; then
+    print "$1" "already at $1 branch, fetching from remote.."
     git pull
 else
     checkStatus
-    print "$current" "switching to master branch"
-    res="$(git checkout master 2>&1)"
+    print "$current" "switching to $1 branch"
+    res="$(git checkout $1 2>&1)"
     checkCheckoutResult "$res"
-    print "master" "pulling from remote.."
+    print "$1" "pulling from remote.."
     git pull
-    print "master" "switching back to $current"
+    print "$1" "switching back to $current"
     res="$(git checkout ${current} 2>&1)"
     checkCheckoutResult "$res"
-    print "$current" "rebasing master.."
-    res="$(git rebase master)"
+    print "$current" "rebasing $1.."
+    res="$(git rebase $1)"
     print "$current" "$res"
 fi
 

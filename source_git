@@ -1,11 +1,7 @@
-if [ -f ~/.git-completion.bash ]; then
-    . ~/.git-completion.bash
-fi
-
 alias master="git checkout master && git pull"
 alias pushrepo="git push -u origin HEAD"
-alias rebasemaster="~/bin/rebasemaster.sh"
-alias configupstream="~/bin/config_upstream.sh"
+alias rebaseb=${0:a:h}/bin/rebase.sh
+alias configupstream=${0:a:h}/bin/config_upstream.sh
 alias clearbranch='git branch --merged | grep -v "master" | grep -v "\*" | xargs -n 1 git branch -d'
 
 checkout() {
