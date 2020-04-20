@@ -34,7 +34,7 @@ function clone_or_pull {
 }
 
 # install Oh My Zsh (https://github.com/ohmyzsh/ohmyzsh)
-#sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # install zsh-autosuggestions
 zsh_autosuggestions_repo="https://github.com/zsh-users/zsh-autosuggestions"
@@ -48,6 +48,9 @@ cat >> ~/.zshrc <<- END
 for f in $cur_dir/source_*; do
     source \$f
 done
+
+# export to sub-processes
+export PATH
 END
 
-#safecopy .vimrc ~
+safecopy .vimrc ~

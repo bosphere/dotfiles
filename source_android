@@ -1,9 +1,10 @@
 # mac only
 # Android Studio bundles the recommended JDK version
-#export STUDIO_JDK="/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk"
+#export STUDIO_JDK=/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk
 
-export PATH=$PATH:"~/Library/Android/sdk/platform-tools":"~/Library/Android/sdk/ndk-bundle"
-alias retrace="~/Library/Android/sdk/tools/proguard/bin/retrace.sh"
+path+=~/Library/Android/sdk/platform-tools
+path+=~/Library/Android/sdk/ndk-bundle
+alias retrace=~/Library/Android/sdk/tools/proguard/bin/retrace.sh
 alias mp4togif=${0:a:h}/bin/mp4_to_gif.sh
 
 # fastlane
