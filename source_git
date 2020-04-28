@@ -6,6 +6,7 @@ alias pushrepo="git push -u origin HEAD"
 alias rebaseb=${0:a:h}/bin/rebase.sh
 alias configupstream=${0:a:h}/bin/config_upstream.sh
 alias clearbranch='git branch --merged | grep -v "master" | grep -v "\*" | xargs -n 1 git branch -d'
+alias latestbranches="git for-each-ref --count=10 --sort=-committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 
 checkout() {
     if [ -z "$1" ]
