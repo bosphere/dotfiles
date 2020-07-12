@@ -1,7 +1,3 @@
-# mac only
-# Android Studio bundles the recommended JDK version
-#export STUDIO_JDK=/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk
-
 path+=~/Library/Android/sdk/platform-tools
 path+=~/Library/Android/sdk/ndk-bundle
 alias retrace=~/Library/Android/sdk/tools/proguard/bin/retrace.sh

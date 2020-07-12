@@ -33,16 +33,13 @@ function clone_or_pull {
     fi
 }
 
-# install Oh My Zsh (https://github.com/ohmyzsh/ohmyzsh)
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
 # install zsh-autosuggestions
+echo "installing zsh-autosuggestions"
 zsh_autosuggestions_repo="https://github.com/zsh-users/zsh-autosuggestions"
 zsh_autosuggestions_dir=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 clone_or_pull $zsh_autosuggestions_repo $zsh_autosuggestions_dir
 
-safecopy .zshrc ~
-
+echo "sourcing config files in ~/.zshrc"
 cur_dir=${0:a:h}
 cat >> ~/.zshrc <<- END
 for f in $cur_dir/source_*; do
@@ -53,4 +50,5 @@ done
 export PATH
 END
 
+echo "copying .vimrc"
 safecopy .vimrc ~

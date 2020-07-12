@@ -1,6 +1,3 @@
-# need to install a custom version of git
-alias git="/usr/local/git/bin/git"
-
 alias master="git checkout master && git pull"
 alias pushrepo="git push -u origin HEAD"
 alias rebaseb=${0:a:h}/bin/rebase.sh
