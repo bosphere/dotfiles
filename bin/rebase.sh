@@ -4,7 +4,7 @@ NC='\x1b[0m'
 
 checkStatus() {
     status="$(git status)"
-    if [[ $status =~ "working directory clean" ]]; then
+    if [[ $status =~ "working directory clean" || $status =~ "working tree clean" ]]; then
         echo -e "[$red$current$NC] branch clean"
     else
         echo -e "[$red$current$NC] branch dirty, aborting.."
