@@ -21,7 +21,7 @@ ZSH_THEME="wezm"
 plugins=(
     git
     adb
-    osx
+    macos
     flutter
     zsh-autosuggestions
 )
